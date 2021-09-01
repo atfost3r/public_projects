@@ -1,21 +1,22 @@
-#! python3 
+#! python3
 
 import random
-guess = ''
-while guess not in ('heads', 'tails'):
-    print('Guess the coin toss! Enter heads or tails:')
+
+guess = ""
+while guess not in ("heads", "tails"):
+    print("Guess the coin toss! Enter heads or tails:")
     guess = input()
-toss = random.randint(0,1) # 0 is tails, 1 is heads
+toss = random.randint(0, 1)  # 0 is tails, 1 is heads
 if toss == 0:
-    toss = 'tails'
+    toss = "tails"
 else:
-    toss = 'heads'
+    toss = "heads"
 if toss == guess:
-    print('You got it!')
+    print("You got it!")
 else:
-    print('Nope! Guess again!')
+    print("Nope! Guess again!")
     guess = input()
     if toss == guess:
-        print('You got it!')
+        print("You got it!")
     else:
-        print('Nope. You are really bad at this game.')
+        print("Nope. You are really bad at this game.")
