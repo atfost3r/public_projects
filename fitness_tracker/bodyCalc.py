@@ -13,3 +13,4 @@ def bodyComp(weight, bodyFat):
     fatWeight = weight * bodyFat
 
     return leanWeight, fatWeight
+
