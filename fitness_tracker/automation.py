@@ -2,11 +2,21 @@
 
 # automation.py - this script is used to automate the timing and input types that are being done
 
-import bodyCalc, dietCalc
+import bodyCalc, dietCalc, csv
 
-def dailyUpdate():   # Create function to do the daily update of data
-
-
+def dailyUpdate(date):   # Create function to do the daily update of data
+    #Get user inputs for the day
+    print("Updating Fitness log for: ", date)
+    weight = float(input("Weight:"))
+    calories_actual = float(input("Calories:"))
+    protein_actual = float(input("Protein:"))
+    carbs_actual = float(input("Carbs:"))
+    fat_actual = float(input("Fat:"))
+    dailyFields = date,weight,calories_actual,protein_actual,carbs_actual,fat_actual
+    #write out 
+    with open('fitness_tracker/databases/dailyBodyStats.csv','a') as f:
+        writer = csv.writer(f)
+        writer.writerow(dailyFields)   
     return
 
 def weeklyUpdate(dayOfTheWeek):
