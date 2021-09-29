@@ -3,7 +3,7 @@
 # main.py - This is the main part of the program for fitness universe updating and computing
 
 from datetime import date
-import bodyCalc, automation
+import bodyCalc, automation, progress
 
 # Get the current date
 
@@ -16,8 +16,9 @@ dt_string = today.strftime("%m/%d/%y")
 # automatic update logic
 
 ## Run daily updates
-automation.dailyUpdate(dt_string)
-
+weight = automation.dailyUpdate(dt_string)
+# Calulate progress
+progress.progressDaily()
 
 # Weekly update
 if dayOfTheWeek == 5:  # Update some stuff on Saturdays

@@ -7,17 +7,23 @@ import bodyCalc, dietCalc, csv
 def dailyUpdate(date):   # Create function to do the daily update of data
     #Get user inputs for the day
     print("Updating Fitness log for: ", date)
-    weight = float(input("Weight:"))
-    calories_actual = float(input("Calories:"))
-    protein_actual = float(input("Protein:"))
-    carbs_actual = float(input("Carbs:"))
-    fat_actual = float(input("Fat:"))
-    dailyFields = date,weight,calories_actual,protein_actual,carbs_actual,fat_actual
+    weight = float(input("Weight: "))
+    calories_actual = float(input("Calories: "))
+    protein_actual = float(input("Protein: "))
+    carbs_actual = float(input("Carbs: "))
+    fat_actual = float(input("Fat: "))
+    calories_goal = 2752
+    protein_goal = 275
+    carbs_goal =  172
+    fat_goal = 107
+    calories_burnt = float(input("Calories Burnt: "))
+    calories_deficit = calories_actual - calories_burnt
+    dailyFields = date,weight,calories_actual,protein_actual,carbs_actual,fat_actual,calories_goal,protein_goal,carbs_goal,fat_goal,calories_burnt,calories_deficit
     #write out 
     with open('fitness_tracker/databases/dailyBodyStats.csv','a') as f:
         writer = csv.writer(f)
         writer.writerow(dailyFields)   
-    return
+    return weight
 
 def weeklyUpdate(dayOfTheWeek):
     
