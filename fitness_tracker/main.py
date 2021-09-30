@@ -12,6 +12,14 @@ dayOfTheWeek = date.today().weekday()  # Get the current day of the week
 # set the date format to m/d/y
 dt_string = today.strftime("%m/%d/%y")
 
+# Alex's Birthday
+birthday = date(1991, 10, 9)
+# Calculate age
+age = (
+    today.year
+    - birthday.year
+    - ((today.month, today.day) < (birthday.month, birthday.day))
+)
 
 # automatic update logic
 
@@ -44,3 +52,16 @@ if dayOfTheWeek == 5:  # Update some stuff on Saturdays
         )
     )
     # Check Macro adherence
+
+    # []TODO: calculate average calorie delta for the week
+    # data = import_csv(file_name)
+    # last_row = data[-1]
+
+    # [] TODO: Check status of calories, weight, protein, etc.
+
+    # [] TODO: Recalulate calories and macros goal
+    #
+    #
+
+
+# [] TODO: Save off necessary variables to be read in next time the program is run

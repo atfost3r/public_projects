@@ -4,8 +4,9 @@
 
 import bodyCalc, dietCalc, csv
 
-def dailyUpdate(date):   # Create function to do the daily update of data
-    #Get user inputs for the day
+
+def dailyUpdate(date):  # Create function to do the daily update of data
+    # Get user inputs for the day
     print("Updating Fitness log for: ", date)
     weight = float(input("Weight: "))
     calories_actual = float(input("Calories: "))
@@ -14,20 +15,34 @@ def dailyUpdate(date):   # Create function to do the daily update of data
     fat_actual = float(input("Fat: "))
     calories_goal = 2752
     protein_goal = 275
-    carbs_goal =  172
+    carbs_goal = 172
     fat_goal = 107
     calories_burnt = float(input("Calories Burnt: "))
     calories_deficit = calories_actual - calories_burnt
-    dailyFields = date,weight,calories_actual,protein_actual,carbs_actual,fat_actual,calories_goal,protein_goal,carbs_goal,fat_goal,calories_burnt,calories_deficit
-    #write out 
-    with open('fitness_tracker/databases/dailyBodyStats.csv','a') as f:
+    dailyFields = (
+        date,
+        weight,
+        calories_actual,
+        protein_actual,
+        carbs_actual,
+        fat_actual,
+        calories_goal,
+        protein_goal,
+        carbs_goal,
+        fat_goal,
+        calories_burnt,
+        calories_deficit,
+    )
+    # write out
+    with open("fitness_tracker/databases/dailyBodyStats.csv", "a") as f:
         writer = csv.writer(f)
-        writer.writerow(dailyFields)   
+        writer.writerow(dailyFields)
     return weight
 
+
 def weeklyUpdate(dayOfTheWeek):
-    
-    print('Time to Update your body measurements.\nGrab a tape measure!')
+
+    print("Time to Update your body measurements.\nGrab a tape measure!")
     bicep_r = float(input("Right Bicep (in): "))
     bicep_l = float(input("Left Bicep (in): "))
     forearm_r = float(input("Right Forearm (in): "))
@@ -40,6 +55,21 @@ def weeklyUpdate(dayOfTheWeek):
     shoulders = float(input("Shoulders (in): "))
     chest = float(input("Chest (in): "))
     waist = float(input("Waist (in): "))
-    navy_bodyfat = bodyCalc.bodyFat(waist, neck)    #calculate body fat percentage with U.S. Navy's formula
+    navy_bodyfat = bodyCalc.bodyFat(
+        waist, neck
+    )  # calculate body fat percentage with U.S. Navy's formula
     [goals] = dietCalc()
-    return bicep_l,bicep_r,forearm_l,forearm_r,calf_l, calf_r, thigh_l, thigh_r,shoulders,chest,waist,navy_bodyfat
+    return (
+        bicep_l,
+        bicep_r,
+        forearm_l,
+        forearm_r,
+        calf_l,
+        calf_r,
+        thigh_l,
+        thigh_r,
+        shoulders,
+        chest,
+        waist,
+        navy_bodyfat,
+    )
