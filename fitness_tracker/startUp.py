@@ -2,7 +2,7 @@
 
 # startUp.py - this script is to be run the first time to set up stuff like goal calories, etc.
 
-import dietCalc,automation
+import dietCalc,automation, csv
 from datetime import date
 
 
@@ -29,8 +29,8 @@ if ans == 'y':
     automation.weeklyUpdate(date.today())
 
 
-start_Values = [date.today(),weight,protein_goal,carbs_goal, fat_goal,calories_goal]
-with open("fitness_tracker/databases/startPoint.csv") as f:
+start_Values = (weight,protein_goal,carbs_goal, fat_goal,calories_goal)
+with open("fitness_tracker/databases/startPoint.csv",'w') as f:
         writer = csv.writer(f)
         writer.writerow(start_Values)
 
