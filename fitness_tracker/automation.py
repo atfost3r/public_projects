@@ -58,7 +58,6 @@ def weeklyUpdate(dayOfTheWeek):
     navy_bodyfat = bodyCalc.bodyFat(
         waist, neck
     )  # calculate body fat percentage with U.S. Navy's formula
-    [goals] = dietCalc()
     return (
         bicep_l,
         bicep_r,
