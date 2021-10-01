@@ -56,6 +56,5 @@ def refeedMacros(calories, weight):
 
 
 def carbCycling():
-    
 
     return
