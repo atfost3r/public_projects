@@ -58,3 +58,13 @@ def refeedMacros(calories, weight):
 def carbCycling():
 
     return
+
+def macroCheck(df_progress, goal_tolerances, goal):
+    cal_delta = df_progress["calories_weekly_delta"].iloc[-1]
+    weight_delta = df_progress["weight_weekly"].iloc[-1]
+    
+    # [] TODO: check if you're moving in the right direction
+    if goal =='cut' and weight_delta < goal_tolerances.get("Min"):
+        if weight_delta > goal_tolerances.get("Max") and cal_delta > 500:
+            print("You'll need to get your calories in line.\nWe'll keep them the same this week.")
+    return
