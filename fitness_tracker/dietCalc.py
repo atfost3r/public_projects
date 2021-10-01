@@ -2,6 +2,7 @@
 
 # dietCalc.py - this subroutine will take current body stats and and calculate the calories, protein, carbs and fat that should be the goal
 
+import adjustmentCalc
 
 def harris_benedict(weight, height, age):
     BMR = 66 + (6.2 * weight) + (12.7 * height) - (6.76 * age)
@@ -55,9 +56,22 @@ def refeedMacros(calories, weight):
     return protein, carbs, fat
 
 
-def carbCycling():
+def carbCycling(weight, height, age):
+    bmr = harris_benedict(weight,height, age)
+    tdee = 1.35 * bmr
+    weekly_target = 7 * tdee
+    #Calculate rest day value
+    restday_cals = bmr
+    restday_protein = (bmr *.45) / 4
+    restday_carbs = (bmr *.25) / 4
+    restday_fat = (bmr *.3) / 9
+    
+    training_cals = (weekly_target - (2 * restday_cals)) / 5
+    training_protein = round(weight)
+    training_fat = (training_cals * .2) / 9
+    training_carbs = (training_cals - (training_protein * 4) + (training_fat * 9)) /4 
 
-    return
+    return restday_cals, restday_carbs, restday_fat, restday_protein, training_cals, training_protein, training_carbs, training_fat
 
 def macroCheck(df_progress, goal_tolerances, goal):
     cal_delta = df_progress["calories_weekly_delta"].iloc[-1]
@@ -67,4 +81,6 @@ def macroCheck(df_progress, goal_tolerances, goal):
     if goal =='cut' and weight_delta < goal_tolerances.get("Min"):
         if weight_delta > goal_tolerances.get("Max") and cal_delta > 500:
             print("You'll need to get your calories in line.\nWe'll keep them the same this week.")
-    return
+        else:
+            calories, carbs = adjustmentCalc.cutAdjustment()
+    return calories, carbs #protein, fat, carbs
