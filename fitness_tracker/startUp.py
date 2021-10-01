@@ -39,8 +39,15 @@ if ans == "y":
     automation.weeklyUpdate(date.today())
 
 
-start_Values = (weight, protein_goal, carbs_goal, fat_goal, calories_goal)
-with open("fitness_tracker/databases/startPoint.csv", "w") as f:
+start_Values = {
+    "Weight": weight,
+    "Protein": protein_goal,
+    "Carbs": carbs_goal,
+    "Fat": fat_goal,
+    "Calories": calories_goal,
+}
+# start_Values = (weight,protein_goal, carbs_goal, fat_goal, calories_goal)
+with open("databases/startPoint.csv", "w") as f:
     writer = csv.writer(f)
     writer.writerow(start_Values)
 

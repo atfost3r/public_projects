@@ -34,13 +34,13 @@ def dailyUpdate(date):  # Create function to do the daily update of data
         calories_deficit,
     )
     # write out
-    with open("fitness_tracker/databases/dailyBodyStats.csv", "a") as f:
+    with open("databases/dailyBodyStats.csv", "a") as f:
         writer = csv.writer(f)
         writer.writerow(dailyFields)
     return weight
 
 
-def weeklyUpdate(dayOfTheWeek):
+def weeklyUpdate():
 
     print("Time to Update your body measurements.\nGrab a tape measure!")
     bicep_r = float(input("Right Bicep (in): "))

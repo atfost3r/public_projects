@@ -3,7 +3,9 @@
 # main.py - This is the main part of the program for fitness universe updating and computing
 
 from datetime import date
-import bodyCalc, automation, progress
+import pandas as pd
+from pandas.core.indexes.base import ensure_index
+import bodyCalc, automation, progress, dietCalc
 
 
 # Get the current date
@@ -21,6 +23,10 @@ age = (
     - birthday.year
     - ((today.month, today.day) < (birthday.month, birthday.day))
 )
+
+#for now, just put the goal here
+goal = 'cut'
+goal_tolerances = {"Min": 0.0, "Goal": -1.0, "Max": -2.0}
 
 # automatic update logic
 
@@ -53,16 +59,7 @@ if dayOfTheWeek == 5:  # Update some stuff on Saturdays
         )
     )
     # Check Macro adherence
+    df_progress = progress.progressWeekly(dayOfTheWeek)
+    [updated_macros] = dietCalc.macroCheck(df_progress, goal_tolerances, goal)
+    
 
-    # []TODO: calculate average calorie delta for the week
-    # data = import_csv(file_name)
-    # last_row = data[-1]
-
-    # [] TODO: Check status of calories, weight, protein, etc.
-
-    # [] TODO: Recalulate calories and macros goal
-    #
-    #
-
-
-# [] TODO: Save off necessary variables to be read in next time the program is run

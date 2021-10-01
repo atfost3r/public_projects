@@ -70,12 +70,12 @@ def progressWeekly(weekDay):
     ).mean()
     print(df_bodyStats.head())
     df_bodyStats.to_csv(
-        "fitness_tracker/databases/weeklyProgressStats.csv",
+        "databases/weeklyProgressStats.csv",
         mode="a",
-        header=FALSE,
+        header=False,
         encoding="utf-8",
     )
-    return
+    return df_bodyStats
 
 
 # progressWeekly(datetime.now())
