@@ -12,3 +12,5 @@ From there, you'll be given the starting out goal macros and calories. This is c
 
 After you have written down these goals, you'll be asked if you want to enter your body measurements. You can either do this or wait. 
 
+## Bulk 
+This is the 
