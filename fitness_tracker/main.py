@@ -24,8 +24,8 @@ age = (
     - ((today.month, today.day) < (birthday.month, birthday.day))
 )
 
-#for now, just put the goal here
-goal = 'cut'
+# for now, just put the goal here
+goal = "cut"
 goal_tolerances = {"Min": 0.0, "Goal": -1.0, "Max": -2.0}
 
 # automatic update logic
@@ -50,6 +50,7 @@ if dayOfTheWeek == 5:  # Update some stuff on Saturdays
         chest,
         waist,
         navy_bodyfat,
+        glutes
     ) = automation.weeklyUpdate(dayOfTheWeek)
     leanWeight, fatWeight = bodyCalc.bodyComp(weight, navy_bodyfat)
     print("Your body fat percentage is: {:2.2f}% ".format(navy_bodyfat * 100))
@@ -61,5 +62,3 @@ if dayOfTheWeek == 5:  # Update some stuff on Saturdays
     # Check Macro adherence
     df_progress = progress.progressWeekly(dayOfTheWeek)
     [updated_macros] = dietCalc.macroCheck(df_progress, goal_tolerances, goal)
-    
-

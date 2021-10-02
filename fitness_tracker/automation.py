@@ -58,6 +58,11 @@ def weeklyUpdate():
     navy_bodyfat = bodyCalc.bodyFat(
         waist, neck
     )  # calculate body fat percentage with U.S. Navy's formula
+    glutes = float(input("Glutes (in): "))
+    weeklyFields = (bicep_r,bicep_l,forearm_r,forearm_l,calf_r,calf_l,thigh_r,thigh_l, neck, shoulders,chest, waist, navy_bodyfat, waist, glutes)
+    with open("databases/weeklyBodyStats.csv", "a") as f:
+       writer = csv.writer(f)
+       writer.writerow(weeklyFields)
     return (
         bicep_l,
         bicep_r,
@@ -71,4 +76,5 @@ def weeklyUpdate():
         chest,
         waist,
         navy_bodyfat,
+        glutes
     )
