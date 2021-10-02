@@ -6,12 +6,11 @@
 # TODO: Determine inputs and outputs
 
 
-def standardAtmosphere( ):
+def standardAtmosphere(temp, g, pressure, density, viscosity ):
 
 
     #TODO: determine settings and stuff
-
-
+    
 
     return temp, g, pressure, density, viscosity
 

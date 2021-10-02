@@ -34,13 +34,13 @@ def dailyUpdate(date):  # Create function to do the daily update of data
         calories_deficit,
     )
     # write out
-    with open("fitness_tracker/databases/dailyBodyStats.csv", "a") as f:
+    with open("databases/dailyBodyStats.csv", "a") as f:
         writer = csv.writer(f)
         writer.writerow(dailyFields)
     return weight
 
 
-def weeklyUpdate(dayOfTheWeek):
+def weeklyUpdate():
 
     print("Time to Update your body measurements.\nGrab a tape measure!")
     bicep_r = float(input("Right Bicep (in): "))
@@ -58,6 +58,11 @@ def weeklyUpdate(dayOfTheWeek):
     navy_bodyfat = bodyCalc.bodyFat(
         waist, neck
     )  # calculate body fat percentage with U.S. Navy's formula
+    glutes = float(input("Glutes (in): "))
+    weeklyFields = (bicep_r,bicep_l,forearm_r,forearm_l,calf_r,calf_l,thigh_r,thigh_l, neck, shoulders,chest, waist, navy_bodyfat, waist, glutes)
+    with open("databases/weeklyBodyStats.csv", "a") as f:
+       writer = csv.writer(f)
+       writer.writerow(weeklyFields)
     return (
         bicep_l,
         bicep_r,
@@ -71,4 +76,5 @@ def weeklyUpdate(dayOfTheWeek):
         chest,
         waist,
         navy_bodyfat,
+        glutes
     )
