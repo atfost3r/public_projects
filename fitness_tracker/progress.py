@@ -12,7 +12,7 @@ import pandas as pd
 def progressDaily():
     # read in the csv containing all my body data
     df_dailyBodyStats = pd.read_csv(
-        "fitness_tracker/databases/dailyBodyStats.csv", encoding="utf-8"
+        "databases/dailyBodyStats.csv", encoding="utf-8"
     )
     df_dailyBodyStats["weight_delta"] = round(df_dailyBodyStats["weight"].diff(), 2)
     df_dailyBodyStats["calories_delta"] = (
@@ -29,7 +29,7 @@ def progressDaily():
     )
     # Save daily progress stats
     df_dailyBodyStats.to_csv(
-        "fitness_tracker/databases/dailyProgressStats.csv", encoding="utf-8"
+        "databases/dailyProgressStats.csv", encoding="utf-8"
     )
     return
 
@@ -37,7 +37,7 @@ def progressDaily():
 def progressWeekly(weekDay):
     # read in the csv containing all my body data
     df_bodyStats = pd.read_csv(
-        "fitness_tracker/databases/dailyBodyStats.csv", encoding="utf-8"
+        "databases/dailyBodyStats.csv", encoding="utf-8"
     )
 
     week = date.today().isocalendar()[1]

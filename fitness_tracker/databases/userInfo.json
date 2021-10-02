@@ -14,5 +14,10 @@
     "cut": {
         "min": -1,
         "max": -2
+    },
+    "maxes": {
+        "bench": 315,
+        "squat": 405,
+        "deadlift": 505
     }
 }
